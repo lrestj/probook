@@ -139,12 +139,10 @@ sudo cp -v /etc/fstab /etc/fstab.bak
 cat $HOME/.dotfiles/nfs2fstab.txt | sudo tee -a /etc/fstab >> /dev/null
 
 echo    
-echo "############################"
-echo "#  Autologin & swappiness  #"
-echo "############################"
-sudo cp -rf $HOME/.dotfiles/getty@tty1.service.d /etc/systemd/system/
+echo "################################"
+echo "#  Swappiness & power profile  #"
+echo "################################"
 sudo cp -rv /home/libor/.dotfiles/journald.conf.d /etc/systemd/
-mkdir -p Templates Stažené Dokumenty Hudba Videa
 sudo powerprofilesctl set performance
 
 echo
