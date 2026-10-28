@@ -12,6 +12,7 @@ abbr ls "ls --color=auto"
 abbr grep "grep --color=auto"
 abbr in "sudo pacman -S"
 abbr rem "sudo pacman -Rsn"
+abbr se "pacman -Ss"
 abbr yup "ya pack -u"
 abbr reb "reboot"
 
