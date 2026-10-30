@@ -1,5 +1,5 @@
 include "mouse.kdl"
-workspace "Tumbleweed"
+workspace "TW"
 prefer-no-csd
 screenshot-path "~/Screenshot %Y-%m-%d %H-%M-%S.png"
 
@@ -94,10 +94,10 @@ binds {
     Mod+Shift+comma { show-hotkey-overlay; }
     Alt+B hotkey-overlay-title="Btop" { spawn-sh "foot --app-id btop btop"; }
     Mod+X hotkey-overlay-title="PowerMenu" { spawn "powercenterniri"; }
-    Mod+N hotkey-overlay-title="Config menu" { spawn "confm"; }
+    Mod+M hotkey-overlay-title="Config menu" { spawn "confm"; }
     Mod+I hotkey-overlay-title="Web bookmarks menu" { spawn "webm"; }
     Alt+I hotkey-overlay-title="Web bookmarks menu" { spawn "webmqute"; }
-    Mod+T hotkey-overlay-title="Open a FileMgr" { spawn "nemo"; }
+    Mod+S hotkey-overlay-title="Open a FileMgr" { spawn "nemo"; }
     Mod+K hotkey-overlay-title="Open a Galculator" { spawn "galculator"; }
     Mod+A hotkey-overlay-title="Open a Terminal" { spawn "foot"; }
     Mod+Backslash hotkey-overlay-title="Run a menu" { spawn-sh "pkill fuzzel || exec fuzzel"; }
@@ -139,7 +139,7 @@ binds {
     Mod+Ctrl+End  { move-column-to-last; }
 
     // Scratschpad
-    Mod+S { spawn-sh "niri msg workspaces | grep \"\\*.*NixOS\" && niri msg action focus-workspace-previous || niri msg action focus-workspace NixOS"; }
+    // Mod+S { spawn-sh "niri msg workspaces | grep \"\\*.*NixOS\" && niri msg action focus-workspace-previous || niri msg action focus-workspace NixOS"; }
 
     // Workspaces:
     Alt+right { focus-workspace-down; }
@@ -172,7 +172,7 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
-    Mod+M { maximize-window-to-edges; }
+    Alt+F { maximize-window-to-edges; }
     Mod+Alt+F { fullscreen-window; }
     Mod+Ctrl+F { expand-column-to-available-width; }
     Mod+KP_Insert { center-column; }
