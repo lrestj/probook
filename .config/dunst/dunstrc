@@ -1,0 +1,6 @@
+[global]
+origin = "top-right"
+font = "JetBrains Mono 12"
+icon_theme = "Papirus-Dark"
+icon_path =/usr/share/icons/Papirus-Dark/32x32/status:/usr/share/icons/Papirus-Dark/32x32/places:/usr/share/icons/Papirus-Dark/32x32/panel:/usr/share/icons/Papirus-Dark/32x32/emotes:/usr/share/icons/Papirus-Dark/32x32/emblems:/usr/share/icons/Papirus-Dark/32x32/devices:/usr/share/icons/Papirus-Dark/32x32/actions:/usr/share/icons/Papirus-Dark/32x32/apps:/home/libor/.local/share/icons
+timeout = 5

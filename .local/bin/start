@@ -1,0 +1,40 @@
+#!/bin/bash
+
+echo
+echo " ##############################"
+echo " #                            #"
+echo " #  HOLA, VYBER SEZENÍ:       #"
+echo " #                            #"
+echo " #  s) SPUSTIT DEBIAN         #"
+echo " #  r) RESTARTOVAT            #"
+echo " #  x) VYPNOUT                #"
+echo " #                            #"
+echo " ##############################"
+while true; do
+  read -n 1 -s wm_choice
+    case $wm_choice in
+    "")
+    echo
+    echo "Spouštím Debian..."
+    exec niri-session -l
+    ;;
+    s)
+    echo
+    echo "Spouštím Debian..."
+    exec niri-session -l
+    ;;
+    [xv])
+    echo "Vypínání..."
+    exec systemctl poweroff
+    sleep 1
+    ;;
+    r)
+    echo "Restart..."
+    sleep 1
+    exec systemctl reboot
+    ;;
+    *)
+    echo "Zvolte jednu z možností"
+    ;;
+    esac
+done
