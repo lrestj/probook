@@ -80,7 +80,7 @@
     bindsym $mod+b exec $BROWSER
     bindsym $mod+t exec nemo
     bindsym $mod+p exec mpv --player-operation-mode=pseudo-gui
-    bindsym $mod+k exec pkill $kalk || $kalk
+    bindsym Alt+k exec pkill $kalk || $kalk
     bindsym $mod+w exec waypaper
     bindsym $mod+m exec clouds   
     bindsym $mod+i exec webm
@@ -125,10 +125,10 @@
     bindsym $mod+Shift_L focus next
 
     # Move window
-    bindsym $ms+h move left 10px
-    bindsym $ms+k move up 10px
-    bindsym $ms+j move down 10px
-    bindsym $ms+l move right 10px
+    bindsym $mod+h move left 10px
+    bindsym $mod+k move up 10px
+    bindsym $mod+j move down 10px
+    bindsym $mod+l move right 10px
 
     # Resize window
     bindsym $ms+Left resize shrink width 10px
