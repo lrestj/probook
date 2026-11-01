@@ -41,9 +41,10 @@
     set $filemgr nemo
 
 ### Apps at startup
+    exec mako &
     exec_always waypaper --restore &
     exec nm-applet --indicator &
-    exec xfce-polkit &
+    exec /usr/libexec/polkit-gnome-authentication-agent-1 &
     exec wl-paste --watch cliphist store
     exec wlsunset -l 50.1 -L 16.2 -t 4700 -T 5000 # Screen blue light settings
     exec udiskie -t
