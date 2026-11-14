@@ -2,34 +2,29 @@
  * ROFI Color theme
  ******************************************************************************/
 * {
-    selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
-    foreground:                  rgba ( 180, 180, 180, 100 % );
-    normal-foreground:           @foreground;
-    alternate-normal-background: @background;
-    red:                         rgba ( 220, 50, 47, 100 % );
-    selected-urgent-foreground:  rgba ( 239, 97, 85, 100 % );
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    urgent-foreground:           rgba ( 239, 97, 85, 100 % );
-    alternate-urgent-background: @background;
-    active-foreground:           rgba ( 129, 91, 164, 100 % );
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    selected-active-foreground:  rgba ( 129, 91, 164, 100 % );
-    alternate-active-background: @background;
-    background:                  rgba ( 46, 52, 64, 96 % );
-    border-color:                 rgba ( 128, 0, 255, 100 % );
-    alternate-normal-foreground: @foreground;
-    normal-background:           @background;
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  rgba ( 68, 68, 67, 100 % );
-    spacing:                     2;
-    separatorcolor:              rgba ( 239, 97, 85, 18 % );
-    urgent-background:           @background;
-    selected-urgent-background:  rgba ( 129, 91, 164, 33 % );
-    alternate-urgent-foreground: @urgent-foreground;
-    background-color:            rgba ( 0, 0, 0, 0 % );
-    alternate-active-foreground: @active-foreground;
-    active-background:           @background;
-    selected-active-background:  rgba ( 129, 91, 164, 33 % );
+foreground:                  rgba ( 180, 180, 180, 100 % );
+selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
+active-foreground:           rgba ( 129, 91, 164, 100 % );
+selected-urgent-foreground:  rgba ( 239, 97, 85, 100 % );
+selected-active-foreground:  rgba ( 129, 91, 164, 100 % );
+urgent-foreground:           rgba ( 239, 97, 85, 100 % );
+alternate-normal-foreground: @foreground;
+alternate-active-foreground: @active-foreground;
+normal-foreground:           @foreground;
+alternate-normal-background: @background;
+alternate-urgent-foreground: @urgent-foreground;
+background:                  rgba ( 46, 52, 64, 96 % );
+background-color:            rgba ( 0, 0, 0, 0 % );
+selected-normal-background:  rgba ( 100, 114, 125, 100 % );
+selected-active-background:  rgba ( 129, 91, 164, 33 % );
+selected-urgent-background:  @selected-active-background;
+normal-background:           @background;
+active-background:           @background;
+urgent-background:           @background;
+alternate-active-background: @background;
+alternate-urgent-background: @background;
+border-color:                rgba ( 128, 0, 255, 100 % );
+separatorcolor:              rgba ( 239, 97, 85, 18 % );
 }
 
 configuration {
