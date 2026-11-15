@@ -14,7 +14,7 @@ configuration {
     }
     timeout {
         action: "kb-cancel";
-        delay: 10;
+        delay: 0;
     }
 }
 
@@ -35,7 +35,7 @@ separatorcolor:              rgba ( 239, 97, 85, 18 % );
 
 window {
     height: 0px;
-    width: 455px;
+    width: 900px;
     background-color: @background;
     border:           3;
     padding:          8;
@@ -53,6 +53,9 @@ textbox {
     text-color: @foreground;
 }
 listview {
+    columns: 2;
+    lines: 8;
+    fixed-columns: true;
     fixed-height: 0;
     border:       0px dash 0px 0px ;
     border-color: @separatorcolor;
