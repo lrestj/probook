@@ -68,8 +68,8 @@ element {
     padding: 1px ;
 }
 element-icon {
-    size: 1.7em;
-    margin: 0 17px 0  0;
+    size: 1.5em;
+    margin: 0 10px 0  0;
 }
 element-text {
     vertical-align: 0.5;
