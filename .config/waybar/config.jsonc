@@ -72,7 +72,7 @@
     },
 
     "memory": {
-        "format": "    {}% ",
+        "format": "   {}%",
         "on-click": "pkill $MENU || rofi -show drun"
     },
 
@@ -87,7 +87,7 @@
     "temperature": {
         "thermal-zone": 0,
         "critical-threshold": 80,
-        "format": " {icon} {temperatureC} °C  ",
+        "format": "{icon} {temperatureC} °C",
         "format-icons": ["", "", ""],
         "on-click": "pkill btop || $TERMINAL --app-id btop -e btop",
         "on-click-right": ""
@@ -156,7 +156,6 @@
    },
 
    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "󰕾 {volume}%  {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -176,15 +175,13 @@
    },
 
    "backlight": {
-        // "device": "acpi_video1",
-        "format": " 󰃟  {percent}%  ",
+        "format": "󰃟 {percent}% ",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "on-click-right": "pkill foot || foot",
         "on-click": "pkill foot || colorpicker"
    },
 
    "tray": {
-        // "icon-size": 21,
         "spacing": 10
    },
 
@@ -198,7 +195,6 @@
 
    "battery": {
         "states": {
-            // "good": 95,
             "warning": 30,
             "critical": 15
         },
@@ -221,34 +217,7 @@
             "balanced": " ",
             "power-saver": " "
         }
-   },
-   "custom/power": {
-        "format" : "  ",
-        "tooltip-format": "",
-        "on-click": "pkill rofi || power"
    }
 }] 
-
-
-// TASK BAR AT THE RIGHT
-
-//{
-//    "layer": "top", // Waybar at top layer
-//    "position": "right", 
-//    //"height": 30,
-//    // "width": 1280,
-//    "spacing": 4,
-//    // Choose the order of the modules
-//    "modules-center": ["wlr/taskbar"],
-//    // Modules configuration
-//    "wlr/taskbar": {
-//        "format": "{icon}",
-//        "icon-size": 38,
-//        "tooltip": true,
-//        "tooltip-format": "{app_id}",
-//        "on-click": "activate",
-//        "on-click-right": "close"
-//    }
-//}]
 
 // END OF FILE

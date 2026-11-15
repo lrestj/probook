@@ -1,5 +1,4 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Hack Nerd Fonts, Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
 }
@@ -16,15 +15,6 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #ffffff;
-}
-*/
-
 window#waybar.termite {
     background-color: #3F3F3F;
 }
@@ -35,20 +25,15 @@ window#waybar.chromium {
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    /* box-shadow: inset 0 -3px #ffffff; */
 }
 
-/* you can set a style on hover for any module like this */
 #cpu:hover,
 #temperature:hover,
 #memory:hover,
@@ -191,7 +176,6 @@ button:hover {
 #custom-office,
 #custom-kalk,
 #custom-text,
-#custom-power, 
 #custom-fm,
 #custom-browser {
     margin-top: 2px;
@@ -254,7 +238,6 @@ button:hover {
     }
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
     color: #ffffff;
@@ -316,17 +299,6 @@ label:focus {
 #idle_inhibitor.activated {
     background-color: #f00a23;
     color: #000000;
-}
-
-
-#custom-power {
-    padding-left: 15px;
-    margin-left: 4px;
-    font-size: 30px;
-    background-image: url('/home/libor/.local/share/icons/system-shutdown.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 
 #taskbar button {
