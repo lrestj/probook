@@ -9,7 +9,7 @@ configuration {
     show-icons: false;
     timeout {
         action: "kb-cancel";
-        delay:  0;
+        delay:  10;
     }
 }
 
@@ -20,7 +20,7 @@ active-foreground:           rgba ( 129, 91, 164, 100 % );
 urgent-foreground:           rgba ( 239, 97, 85, 100 % );
 
 background:                  rgba ( 46, 52, 64, 96 % );
-background-color:            rgba ( 0, 0, 0, 0 % );
+background-color:            @background;
 selected-normal-background:  rgba ( 100, 114, 125, 100 % );
 selected-active-background:  rgba ( 129, 91, 164, 33 % );
 
