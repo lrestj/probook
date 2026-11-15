@@ -120,8 +120,7 @@ button:hover {
 }
 
 #backlight,
-#clock,
-#battery {
+#clock {
     padding-top: 5px;
 }
 
@@ -323,8 +322,8 @@ label:focus {
 #custom-power {
     padding-left: 15px;
     margin-left: 4px;
-    font-size: 17px;
-    background-image: url('/home/libor/.local/share/icons/power.png');
+    font-size: 30px;
+    background-image: url('/home/libor/.local/share/icons/system-shutdown.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

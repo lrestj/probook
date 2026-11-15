@@ -35,11 +35,11 @@
         "tray",
         "mpd",
         "pulseaudio",
+        "power-profiles-daemon",
         "backlight",
         "clock",
-        "battery",
-        "power-profiles-daemon",
-        "custom/power"
+        "battery"
+        // "custom/power"
     ],
 
     "sway/workspaces": {
@@ -202,14 +202,15 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon} ",
-        "format-full": "{capacity}% {icon} ",
-        "format-charging": "󰢝 {capacity}% ",
-        "format-plugged": " {capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format": "{capacity}% {icon}   ❎",
+        "format-full": "{capacity}% {icon}   ❎",
+        "format-charging": "󰢝 {capacity}%   ❎",
+        "format-plugged": " {capacity}%   ❎",
+        "format-alt": "{time} {icon}  ❎",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "on-click": "pkill $MENU || power"
    },
 
    "power-profiles-daemon": {
