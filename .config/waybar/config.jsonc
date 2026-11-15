@@ -72,12 +72,12 @@
     },
 
     "memory": {
-        "format": " Menu  RAM   {}% ",
+        "format": "     {}% ",
         "on-click": "pkill $MENU || rofi -show drun"
     },
 
     "cpu": {
-        "format": "CPU   {usage}%",
+        "format": " {usage}%",
         "tooltip": false,
         "on-click": "pkill $TERMINAL || $TERMINAL",
         "on-click-right": "",
