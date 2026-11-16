@@ -119,6 +119,7 @@ case-indicator {
     text-color: @foreground;
 }
 entry {
+    placeholder: "";
     spacing:    0;
     text-color: @foreground;
 }

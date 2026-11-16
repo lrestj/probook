@@ -1,0 +1,61 @@
+#!/bin/bash
+
+a=" Sdilej.cz"
+b=" Prehraj.to"
+c=" Github Zbook"
+d=" E-mail"
+e=" Nixos pkgs"
+f=" Nerd Font"
+g=" "
+h=" "
+i=" "
+j=" "
+k=" "
+l=" "
+m=" "
+z=" Upravit ..."
+
+ai="\0icon\x1fbrave"
+zi="\0icon\x1fpreferences-system"
+
+selected=$(echo -e "\
+$a$ai\n\
+$b$ai\n\
+$c$ai\n\
+$d$ai\n\
+$e$ai\n\
+$f$ai\n\
+$z$zi\
+" | rofi -dmenu -config ~/.config/rofi/links.rasi -i -show-icons -auto-select -p "Vyber" )
+case $selected in
+    "$a")
+        $BROWSER https://www.sdilej.cz;;
+    "$b")
+        $BROWSER https://www.prehraj.to;;
+    "$c")
+        $BROWSER https://github.com/lrestj/zbook;;
+    "$d")
+        $BROWSER https://gmail.com;;
+    "$e")
+        $BROWSER https://search.nixos.org/packages;;
+    "$f")
+        $BROWSER https://nerdfonts.com/cheat-sheet;;
+    "$g")
+        $BROWSER ;;
+    "$h")
+        $BROWSER ;;
+    "$i")
+        $BROWSER ;;
+    "$j")
+        $BROWSER  ;;
+    "$k")
+        $BROWSER ;;
+    "$l")
+        $BROWSER ;;
+    "$m")
+        $BROWSER ;;
+    "$z")
+        $TERMINAL --class vim -e bash -c "sleep 0.1; exec vim ~/.local/bin/weblinks";;
+esac
+
+#### END OF FILE ####
