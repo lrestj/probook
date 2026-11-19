@@ -17,10 +17,11 @@ configuration {
     font: "JetBrains Mono 14";
     auto-select: true;
     case-sensitive: false;
+    show-icons: true;
 }
 
 window {
-    height: 440px;
+    height: 400px;
     width: 300px;
     background-color: @background;
     border:           2;

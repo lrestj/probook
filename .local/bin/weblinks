@@ -1,61 +1,45 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-a=" Sdilej.cz"
-b=" Prehraj.to"
-c=" Github Zbook"
-d=" E-mail"
-e=" Nixos pkgs"
-f=" Nerd Font"
-g=" "
-h=" "
-i=" "
-j=" "
-k=" "
-l=" "
-m=" "
-z=" Upravit ..."
+# Položky ve formátu "Název|URL" (v přesném pořadí)
+items=(
+    " Sdilej.cz|https://sdilej.cz"
+    " Prehraj.to|https://prehraj.to"
+    " Github Zbook|https://github.com"
+    " E-mail|https://gmail.com"
+    " Nixos pkgs|https://nixos.org"
+    " Nerd Font|https://nerdfonts.com"
+)
 
-ai="\0icon\x1fbrave"
-zi="\0icon\x1fpreferences-system"
+edit_label=" Upravit ..."
 
-selected=$(echo -e "\
-$a$ai\n\
-$b$ai\n\
-$c$ai\n\
-$d$ai\n\
-$e$ai\n\
-$f$ai\n\
-$z$zi\
-" | rofi -dmenu -config ~/.config/rofi/links.rasi -i -show-icons -auto-select -p "Vyber" )
-case $selected in
-    "$a")
-        $BROWSER https://www.sdilej.cz;;
-    "$b")
-        $BROWSER https://www.prehraj.to;;
-    "$c")
-        $BROWSER https://github.com/lrestj/zbook;;
-    "$d")
-        $BROWSER https://gmail.com;;
-    "$e")
-        $BROWSER https://search.nixos.org/packages;;
-    "$f")
-        $BROWSER https://nerdfonts.com/cheat-sheet;;
-    "$g")
-        $BROWSER ;;
-    "$h")
-        $BROWSER ;;
-    "$i")
-        $BROWSER ;;
-    "$j")
-        $BROWSER  ;;
-    "$k")
-        $BROWSER ;;
-    "$l")
-        $BROWSER ;;
-    "$m")
-        $BROWSER ;;
-    "$z")
-        $TERMINAL --class vim -e bash -c "sleep 0.1; exec vim ~/.local/bin/weblinks";;
-esac
+# Sestavení menu a přímé odeslání do fuzzelu
+selected=$(
+    {
+        for item in "${items[@]}"; do
+            printf "%s\0icon\x1fbrave\n" "${item%%|*}"
+        done
+        printf "%s\0icon\x1fpreferences-system\n" "$edit_label"
+    } | rofi -config /home/libor/.config/rofi/weblinks.rasi -i -dmenu -theme-str 'inputbar { enabled: false; }'
+)
+
+# Vyhodnocení přerušení (Esc / zavření bez výběru)
+if [[ -z "$selected" ]]; then
+    notify-send -t 1200 -i /home/libor/.local/share/icons/help.png "Přerušeno uživatelem."
+    exit 0
+fi
+
+# Otevření editoru
+if [[ "$selected" == "$edit_label" ]]; then
+    $TERMINAL --class vim -e bash -c "sleep 0.1; exec vim ~/.local/bin/weblinks"
+    exit 0
+fi
+
+# Otevření vybraného odkazu
+for item in "${items[@]}"; do
+    if [[ "${item%%|*}" == "$selected" ]]; then
+        $BROWSER "${item#*|}"
+        break
+    fi
+done
 
 #### END OF FILE ####

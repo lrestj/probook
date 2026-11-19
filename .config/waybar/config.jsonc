@@ -204,7 +204,7 @@
         "format-plugged": " {capacity}%  ❌",
         "format-alt": "{time} {icon}  ❌",
         "format-icons": ["", "", "", "", ""],
-        "on-click": "pkill $MENU || power"
+        "on-click": "pkill $MENU || powerwaybar"
    },
 
    "power-profiles-daemon": {
