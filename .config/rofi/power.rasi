@@ -1,6 +1,26 @@
+configuration {
+    font: "JetBrains Mono 14";
+    auto-select: true;
+    matching: "prefix";
+    tokenize: false;
+    sorting-method: "fzf";
+    case-sensitive: false;
+    show-icons: true;
+    dmenu {
+        exit-if-empty: false;
+    }
+    drun {
+        display-name: "Aplikace";
+    }
+    timeout {
+        action: "kb-cancel";
+        delay: 0;
+    }
+}
+
 * {
 foreground:                  rgba ( 180, 180, 180, 100 % );
-selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
+selected-normal-foreground:  rgba ( 14, 28, 150, 100 % );
 active-foreground:           rgba ( 129, 91, 164, 100 % );
 urgent-foreground:           rgba ( 239, 97, 85, 100 % );
 
@@ -13,20 +33,12 @@ border-color:                rgba ( 128, 0, 255, 100 % );
 separatorcolor:              rgba ( 239, 97, 85, 18 % );
 }
 
-configuration {
-    font: "JetBrains Mono 14";
-    auto-select: true;
-    case-sensitive: false;
-    show-icons: true;
-    auto-select: true;
-}
-
 window {
-    height: 230px;
-    width: 240px;
+    height: 222px;
+    width: 250px;
     background-color: @background;
-    border:           2;
-    padding:          5;
+    border:           3;
+    padding:          8;
 }
 mainbox {
     border:  0;
@@ -41,6 +53,8 @@ textbox {
     text-color: @foreground;
 }
 listview {
+    lines: 4;
+    fixed-columns: true;
     fixed-height: 0;
     border:       0px dash 0px 0px ;
     border-color: @separatorcolor;
@@ -53,7 +67,7 @@ element {
     padding: 1px ;
 }
 element-icon {
-    size: 1.7em;
+    size: 1.5em;
     margin: 0 1px 0  0;
 }
 element-text {

@@ -1,6 +1,6 @@
 * {
 foreground:                  rgba ( 180, 180, 180, 100 % );
-selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
+selected-normal-foreground:  rgba ( 14, 28, 150, 100 % );
 active-foreground:           rgba ( 129, 91, 164, 100 % );
 urgent-foreground:           rgba ( 239, 97, 85, 100 % );
 
@@ -14,7 +14,7 @@ separatorcolor:              rgba ( 239, 97, 85, 18 % );
 }
 
 configuration {
-    font: "JetBrains Mono 12";
+    font: "JetBrains Mono 13";
     auto-select: true;
     show-icons: true;
     case-sensitive: false;
@@ -24,9 +24,9 @@ configuration {
 window {
     location: north east;
     anchor: north east;
-    x-offset: -10px;
+    x-offset: -3px;
     y-offset: 45px;
-    height: 205px;
+    height: 215px;
     width: 200px;
     background-color: @background;
     border:           2;
