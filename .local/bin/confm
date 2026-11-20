@@ -11,10 +11,7 @@ items=(
 " Keybindings|sway|edit ~/.config/sway/keybindings"
 " Windowsrules|sway|edit ~/.config/sway/windowsrules"
 " Odpojit USB|usb|rofi-umount"
-" Configuration.nix|preferences-system-services|edit ~/.dotfiles/nixos/hosts/zbook/configuration.nix"
-" Flake.nix|preferences-system-services|edit ~/.dotfiles/nixos/flake.nix"
-" Pkgs|preferences-system-services|edit ~/.dotfiles/nixos/modules/pkgs.nix"
-"  Vimrc|vim|edit ~/.config/vim/vimrc"
+" Vimrc|vim|edit ~/.config/vim/vimrc"
 " Waybar config|wayland|edit ~/.config/waybar/config.jsonc"
 " Waybar css|wayland|edit ~/.config/waybar/style.css"
 " Clouds|network-server|clouds"
@@ -36,7 +33,7 @@ for item in "${items[@]}"; do
 done
 
 # Výběr a přímé spuštění bez druhého cyklu
-selected=$(echo -en "$menu" | rofi -i -dmenu -p "Vyber: ")
+selected=$(echo -en "$menu" | rofi -i -dmenu -p "Vyber")
 
 [[ -n "$selected" ]] && eval "${cmds[$selected]}" || notify-send -t 1200 -i dialog-information "Přerušeno uživatelem."
 

@@ -2,7 +2,7 @@
 
 require("bunny"):setup({
   hops = {
-    { key = "i",          path = "/usr/share/icons/Papirus-Dark", desc = "Icons" },
+    { key = "i",          path = "/usr/share/icons/Papirus-Dark/64x64/categories", desc = "Icons" },
     { key = "y",          path = "/home/libor/.config/yazi/", desc = "Yazi" },
     { key = "r",          path = "~/.config/rofi/", desc = "Rofi" },
     { key = { "l", "s" }, path = "~/.local/share", desc = "Local share"  },
