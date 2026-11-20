@@ -17,6 +17,7 @@ items=(
 "  Vimrc|vim|edit ~/.config/vim/vimrc"
 " Waybar config|wayland|edit ~/.config/waybar/config.jsonc"
 " Waybar css|wayland|edit ~/.config/waybar/style.css"
+" Clouds|network-server|clouds"
 " Tiskárna web|printer|$BROWSER http://192.168.77.5 &"
 " Stuff2remember|notepad|edit ~/.dotfiles/other/stuff2remember.txt"
 " Add new script|add|addnew"
