@@ -18,7 +18,7 @@ selected=$(
         for item in "${items[@]}"; do
             printf "%s\0icon\x1fbrave\n" "${item%%|*}"
         done
-        printf "%s\0icon\x1fpreferences-system\n" "$edit_label"
+        printf "%s\0icon\x1fpreferences-system-services\n" "$edit_label"
     } | rofi -config /home/libor/.config/rofi/weblinks.rasi -i -dmenu -theme-str 'inputbar { enabled: false; }'
 )
 
