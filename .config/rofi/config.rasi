@@ -127,6 +127,7 @@ button.selected {
     text-color:       @selected-normal-foreground;
 }
 inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,num-filtered-rows,textbox-num-sep,num-rows];
     spacing:    0;
     text-color: @foreground;
     padding:    1px ;
@@ -143,9 +144,6 @@ entry {
 prompt {
     spacing:    0;
     text-color: @foreground;
-}
-inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,num-filtered-rows,textbox-num-sep,num-rows];
 }
 num-filtered-rows, num-rows {
     expand: false;
