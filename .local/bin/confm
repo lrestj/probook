@@ -38,7 +38,7 @@ done
 # Výběr a přímé spuštění bez druhého cyklu
 selected=$(echo -en "$menu" | rofi -i -dmenu -p "Vyber: ")
 
-[[ -n "$selected" ]] && eval "${cmds[$selected]}" || notify-send -t 1200 -i /home/libor/.local/share/icons/help.png "Přerušeno uživatelem."
+[[ -n "$selected" ]] && eval "${cmds[$selected]}" || notify-send -t 1200 -i dialog-information "Přerušeno uživatelem."
 
 
 #### END OF FILE ####

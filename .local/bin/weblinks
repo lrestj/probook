@@ -24,7 +24,7 @@ selected=$(
 
 # Vyhodnocení přerušení (Esc / zavření bez výběru)
 if [[ -z "$selected" ]]; then
-    notify-send -t 1200 -i /home/libor/.local/share/icons/help.png "Přerušeno uživatelem."
+    notify-send -t 1200 -i dialog-information "Přerušeno uživatelem."
     exit 0
 fi
 

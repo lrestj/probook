@@ -1,6 +1,6 @@
 * {
 foreground:                  rgba ( 180, 180, 180, 100 % );
-selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
+selected-normal-foreground:  rgba ( 14 , 28, 150, 100 % );
 active-foreground:           rgba ( 129, 91, 164, 100 % );
 urgent-foreground:           rgba ( 239, 97, 85, 100 % );
 

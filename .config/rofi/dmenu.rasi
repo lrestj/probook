@@ -1,14 +1,14 @@
+* {
+    foreground:     rgba ( 180, 180, 180, 100 % );
+    background:     rgba ( 46, 52, 64, 96 % );
+    border-color:   rgba ( 128, 0, 255, 100 % );
+}
+
 configuration {
     font: "JetBrains Mono 13";
     dmenu {
         exit-if-empty: false;
     }
-}
-
-* {
-    foreground:     rgba ( 180, 180, 180, 100 % );
-    background:     rgba ( 46, 52, 64, 96 % );
-    border-color:   rgba ( 128, 0, 255, 100 % );
 }
 
 window {
