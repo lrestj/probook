@@ -73,7 +73,7 @@
 
     "memory": {
         "format": "   {}%",
-        "on-click": "pkill $MENU || rofi -show drun"
+        "on-click": "pkill $MENU || rofi -show drun -config /home/libor/.config/rofi/menu.rasi"
     },
 
     "cpu": {

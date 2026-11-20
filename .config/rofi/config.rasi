@@ -1,3 +1,18 @@
+* {
+foreground:                  rgba ( 180, 180, 180, 100 % );
+selected-normal-foreground:  rgba ( 14, 28, 150, 100 % );
+active-foreground:           rgba ( 129, 91, 164, 100 % );
+urgent-foreground:           rgba ( 239, 97, 85, 100 % );
+
+background:                  rgba ( 46, 52, 64, 96 % );
+background-color:            @background;
+selected-normal-background:  rgba ( 100, 114, 125, 100 % );
+selected-active-background:  rgba ( 129, 91, 164, 33 % );
+
+border-color:                rgba ( 128, 0, 255, 100 % );
+separatorcolor:              rgba ( 239, 97, 85, 18 % );
+}
+
 configuration {
     font: "JetBrains Mono 14";
     auto-select: true;
@@ -18,24 +33,9 @@ configuration {
     }
 }
 
-* {
-foreground:                  rgba ( 180, 180, 180, 100 % );
-selected-normal-foreground:  rgba ( 14, 28, 150, 100 % );
-active-foreground:           rgba ( 129, 91, 164, 100 % );
-urgent-foreground:           rgba ( 239, 97, 85, 100 % );
-
-background:                  rgba ( 46, 52, 64, 96 % );
-background-color:            @background;
-selected-normal-background:  rgba ( 100, 114, 125, 100 % );
-selected-active-background:  rgba ( 129, 91, 164, 33 % );
-
-border-color:                rgba ( 128, 0, 255, 100 % );
-separatorcolor:              rgba ( 239, 97, 85, 18 % );
-}
-
 window {
     height: 0px;
-    width: 950px;
+    width: 970px;
     background-color: @background;
     border:           3;
     padding:          8;
@@ -54,7 +54,7 @@ textbox {
 }
 listview {
     columns: 2;
-    lines: 8;
+    lines: 10;
     fixed-columns: true;
     fixed-height: 0;
     border:       0px dash 0px 0px ;
@@ -145,7 +145,14 @@ prompt {
     text-color: @foreground;
 }
 inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    children:   [ prompt,textbox-prompt-colon,entry,num-filtered-rows,textbox-num-sep,num-rows];
+}
+num-filtered-rows, num-rows {
+    expand: false;
+}
+textbox-num-sep {
+    expand: false;
+    str: "/";
 }
 textbox-prompt-colon {
     expand:     false;
