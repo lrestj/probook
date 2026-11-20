@@ -1,19 +1,28 @@
 #!/bin/bash
 
-a="Okno nebo výběr"
-b="Celá plocha"
-ai="\0icon\x1fgnome-screenshot"
-bi="\0icon\x1femblem-photos"
+# Definice možností v pořadí: "Popisek|Ikona|Příkaz_pro_grimshot"
+options=(
+    "Okno nebo výběr|gnome-screenshot|anything"
+    "Celá plocha|emblem-photos|output"
+)
 
-selected=$(echo -e "$a$ai\n$b$bi" | rofi -dmenu -i -config ~/.config/rofi/clouds.rasi -theme-str 'inputbar { enabled: false; }')
+menu=""
+for item in "${options[@]}"; do
+    IFS="|" read -r label icon _ <<< "$item"
+    menu+="${label}\0icon\x1f${icon}\n"
+done
+
+selected=$(echo -en "$menu" | rofi -dmenu -i -p "Snímek obrazovky" -config ~/.config/rofi/clouds.rasi -theme-str 'window { height: 155px; }')
 sleep 0.2
-case $selected in
-    "$a")
-        grimshot --notify save anything;;
-    "$b")
-        grimshot --notify save output;;
-       *)
-        notify-send -t 1200 -i dialog-information "Přerušeno uživatelem"
-esac
+
+for item in "${options[@]}"; do
+    IFS="|" read -r label _ target <<< "$item"
+    if [[ "$selected" == "$label" ]]; then
+        grimshot --notify save "$target"
+        exit 0
+    fi
+done
+
+notify-send -t 1200 -i dialog-information "Přerušeno uživatelem"
 
 #### END OF FILE ####
