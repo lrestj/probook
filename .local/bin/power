@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-# Pomocná funkce pro otevření souboru ve Vimu
-edit() {
-  "$TERMINAL" --class vim -e bash -c "sleep 0.1; exec vim $1" &
-}
-
 # Definice položek: "Název|ikona|příkaz"
 items=(
 " Odhlásit|system-log-out|sleep 0.5; swaymsg exit"
@@ -26,7 +21,6 @@ done
 # Výběr a přímé spuštění bez druhého cyklu
 selected=$(echo -en "$menu" | rofi -i -config ~/.config/rofi/power.rasi -dmenu -theme-str 'inputbar { enabled: false; }' )
 
-[[ -n "$selected" ]] && eval "${cmds[$selected]}" || notify-send -t 1200 -i /home/libor/.local/share/icons/help.png "Přerušeno uživatelem."
-
+[[ -n "$selected" ]] && eval "${cmds[$selected]}" || notify-send -t 1200 -i dialog-information "Přerušeno uživatelem."
 
 #### END OF FILE ####

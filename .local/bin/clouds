@@ -44,7 +44,7 @@ selected=$(
 )
 
 if [[ -z "$selected" ]]; then
-    notify-send -i im-kick-user "Úložiště" "Zrušeno uživatelem"
+    notify-send -t 1200 -i dialog-information "Úložiště" "Zrušeno uživatelem"
     exit 0
 fi
 

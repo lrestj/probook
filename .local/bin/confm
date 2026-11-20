@@ -10,7 +10,7 @@ items=(
 " Sway conf|sway|edit ~/.config/sway/config"
 " Keybindings|sway|edit ~/.config/sway/keybindings"
 " Windowsrules|sway|edit ~/.config/sway/windowsrules"
-" Odpojit USB|usb|fuzzel-umount"
+" Odpojit USB|usb|rofi-umount"
 " Configuration.nix|preferences-system-services|edit ~/.dotfiles/nixos/hosts/zbook/configuration.nix"
 " Flake.nix|preferences-system-services|edit ~/.dotfiles/nixos/flake.nix"
 " Pkgs|preferences-system-services|edit ~/.dotfiles/nixos/modules/pkgs.nix"

@@ -5,14 +5,15 @@ b="Celá plocha"
 ai="\0icon\x1fgnome-screenshot"
 bi="\0icon\x1femblem-photos"
 
-selected=$(echo -e "$a$ai\n$b$bi" | rofi -dmenu -i -show-icons -auto-select )
+selected=$(echo -e "$a$ai\n$b$bi" | rofi -dmenu -i -config ~/.config/rofi/clouds.rasi -theme-str 'inputbar { enabled: false; }')
+sleep 0.2
 case $selected in
     "$a")
-        sleep 0.2 && grimshot --notify save anything;;
+        grimshot --notify save anything;;
     "$b")
-        sleep 0.2 && grimshot --notify save output;;
+        grimshot --notify save output;;
        *)
-        notify-send -t 1200 -i dialog-warning "Přerušeno uživatelem"
+        notify-send -t 1200 -i dialog-information "Přerušeno uživatelem"
 esac
 
 #### END OF FILE ####

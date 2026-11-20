@@ -1,15 +1,12 @@
 #!/usr/bin/env sh
 
-directory="/media/${USER}/"
-removable="$(ls "$directory")"
-lines="$(ls "$directory" | wc -l)"
+dir="/media/$USER"
+disks=$(ls -1 "$dir" 2>/dev/null)
 
-[ "$lines" = "0" ] && notify-send "⚠️  Není co odpojit." && exit 1
+[ -z "$disks" ] && notify-send -i dialog-error "Není co odpojit." && exit 0
 
-selection="$(echo "$removable" | rofi -dmenu -p "💾 Odpojit? " -lines "$lines" -no-auto-select)"
+selection=$(printf "%s\n" "$disks" | rofi -dmenu -theme-str 'window { height: 160px; }' -p "💾 Odpojit?" -no-auto-select)
 
-[ -z "$selection" ] && exit 1
-
-udiskie-umount "${directory}/${selection}"
+[ -n "$selection" ] && udiskie-umount "$dir/$selection"
 
 #### END OF FILE ####
