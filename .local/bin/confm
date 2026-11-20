@@ -18,7 +18,7 @@ items=(
 " Tiskárna web|printer|$BROWSER http://192.168.77.5 &"
 " Stuff2remember|notepad|edit ~/.dotfiles/other/stuff2remember.txt"
 " Add new script|add|addnew"
-" Upravit ...|preferences-system|edit ~/.local/bin/confm"
+" Upravit ...|preferences-system-services|edit ~/.local/bin/confm"
 
 )
 
