@@ -1,5 +1,5 @@
 configuration {
-    font: "JetBrains Mono 14";
+    font: "Inter 15";
     modes: "drun,run,ssh";
     auto-select: true;
     matching: "prefix";
@@ -9,7 +9,7 @@ configuration {
     show-icons: false;
     timeout {
         action: "kb-cancel";
-        delay:  10;
+        delay:  0;
     }
 }
 
@@ -29,7 +29,7 @@ separatorcolor:              rgba ( 239, 97, 85, 18 % );
 }
 
 window {
-    height: 600px;
+    height: 610px;
     width: 855px;
     background-color: @background;
     border:           3;

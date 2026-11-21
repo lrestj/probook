@@ -14,7 +14,7 @@ separatorcolor:              rgba ( 239, 97, 85, 18 % );
 }
 
 configuration {
-    font: "JetBrains Mono 13";
+    font: "Inter 13";
     auto-select: true;
     show-icons: true;
     case-sensitive: false;
@@ -25,8 +25,8 @@ window {
     location: north east;
     anchor: north east;
     x-offset: -3px;
-    y-offset: 45px;
-    height: 215px;
+    y-offset: 44px;
+    height: 202px;
     width: 200px;
     background-color: @background;
     border:           2;

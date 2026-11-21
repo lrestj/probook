@@ -14,7 +14,7 @@ separatorcolor:              rgba ( 239, 97, 85, 18 % );
 }
 
 configuration {
-    font: "JetBrains Mono 14";
+    font: "Inter 14";
     auto-select: true;
     case-sensitive: false;
     show-icons: true;
@@ -22,7 +22,7 @@ configuration {
 }
 
 window {
-    height: 130px;
+    height: 115px;
     width: 310px;
     background-color: @background;
     border:           2;
