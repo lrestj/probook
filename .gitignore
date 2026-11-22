@@ -118,3 +118,4 @@ zbook/
 .bash_logout
 .config/btop/btop.log
 .lesshst
+.config/vim/autoload/plug.vim.old
