@@ -24,7 +24,7 @@
     bindsym $ca+W exec wallpaper
 
     # Show menus
-    bindsym $mod+Backslash exec pkill $MENU || rofi -show drun
+    bindsym Alt+Y exec pkill $MENU || rofi -show drun
     bindsym $mod+x exec pkill $MENU || power
 
     # Toggle waybar & taskbar
@@ -44,7 +44,7 @@
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
-    bindsym $mod+Shift_L focus next
+    bindsym $mod+Backslash focus next
 
     # Move window
     bindsym $mod+h move left 10px
