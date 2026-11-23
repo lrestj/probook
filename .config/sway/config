@@ -26,6 +26,7 @@ output * bg "/home/libor/.dotfiles/wallpapers/debian1.png" fill
     titlebar_padding 3
 
 ### Autostart
+    exec /usr/libexec/polkit-mate-authentication-agent-1
     exec waybar
     exec mako &
     exec nm-applet --indicator &
@@ -40,3 +41,4 @@ output * bg "/home/libor/.dotfiles/wallpapers/debian1.png" fill
     include /etc/sway/config.d/*
 
 #### END OF FILE #####
+
