@@ -12,7 +12,7 @@
     for_window [app_id="links"] floating enable, resize set 800  600
     for_window [app_id="update"] floating enable, resize set 900  600 
     for_window [class="Vlc"] floating enable
-    for_window [app_id="hyprpicker"] floating enable, resize set 350 150
+    for_window [app_id="hyprpicker"] floating enable, resize set 650 450
     for_window [app_id="mpv"] floating enable
     for_window [app_id="vimbuild"] floating enable
     for_window [app_id="gparted"] floating enable, resize set 1600 999

@@ -1,5 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-$TERMINAL --app-id hyprpicker -e bash -c "echo -e 'Barva uložena ve schránce.\nMě zavři 👍 '; hyprpicker |wl-copy; read"
+# Pokud se skript spustil s parametrem --confirm (už běží uvnitř footu)
+if [ "$1" == "--confirm" ]; then
+    echo -e "\n  Barva \033[1m$2\033[0m uložena ve schránce."
+    echo -e "  Já se sám zavřu... 👍\n"
+    read -t 3 -n 1 -s -r
+    exit 0
+fi
+
+# Spustí hyprpicker a uloží výsledek
+COLOR=$(hyprpicker | tr -d '\n')
+
+# Pokud výběr zrušíš (Esc), skončí
+if [ -z "$COLOR" ]; then
+    exit 0
+fi
+
+# Zkopíruje do schránky
+echo -n "$COLOR" | wl-copy
+
+# Otevře okno foot s potvrzením
+foot --app-id=hyprpicker -e "$(realpath "$0")" --confirm "$COLOR"
 
 #### END OF FILE ####
