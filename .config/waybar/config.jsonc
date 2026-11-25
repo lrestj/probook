@@ -178,7 +178,7 @@
         "format": "󰃟 {percent}% ",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "on-click-right": "pkill foot || foot",
-        "on-click": "pkill foot || colorpicker"
+        "on-click": "colorpicker"
    },
 
    "tray": {

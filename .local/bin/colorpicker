@@ -1,5 +1,5 @@
 #!/bin/bash
 
-$TERMINAL --class hyprpicker -e bash -c "echo 'Vyber barvu a pak mě zavři'; hyprpicker |wl-copy; read"
+$TERMINAL --app-id hyprpicker -e bash -c "echo -e 'Barva uložena ve schránce.\nMě zavři 👍 '; hyprpicker |wl-copy; read"
 
 #### END OF FILE ####
