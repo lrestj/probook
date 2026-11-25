@@ -1,41 +1,42 @@
 #!/bin/bash
 
-echo
-echo " #############################"
-echo " #                           #"
-echo " #    HOLA, VYBER SEZENÍ:    #"
-echo " #                           #"
-echo " #  Enter) SPUSTIT           #"
-echo " #      R) RESTARTOVAT       #"
-echo " #      V) VYPNOUT           #"
-echo " #                           #"
-echo " #############################"
+# Vykreslení menu najednou pomocí cat (čistší než opakované echo)
+cat << "EOF"
+
+#############################
+#                           #
+#    HOLA, VYBER SEZENÍ:    #
+#                           #
+#    Enter) SPUSTIT         #
+#    R)     RESTARTOVAT     #
+#    V)     VYPNOUT         #
+#                           #
+#############################
+EOF
+
 while true; do
-  read -n 1 -s wm_choice
-    case $wm_choice in
-    "")
-    echo
-    echo "Spouštím Debian..."
-    exec sway-run
-    break;;
-    s)
-    echo
-    echo "Spouštím Debian..."
-    exec sway-run
-    break;;
-    [xv])
-    echo "Vypínání..."
-    exec systemctl poweroff
-    sleep 1
-    break;;
-    r)
-    echo "Restart..."
-    sleep 1
-    exec systemctl reboot
-    break;;
-    *)
-    echo "Zvolte jednu z možností"
-    ;;
+    # -r zabrání interpretaci zpětných lomítek
+    read -r -n 1 -s wm_choice
+
+    # Převedení vstupu na malá písmena (funguje pak 'r' i 'R', 'v' i 'V')
+    case "${wm_choice,,}" in
+        "" | "s")
+            echo -e "\nSpouštím Debian..."
+            exec sway-run
+            ;;
+        "v" | "x")
+            echo -e "\nVypínání..."
+            sleep 1
+            exec systemctl poweroff
+            ;;
+        "r")
+            echo -e "\nRestart..."
+            sleep 1
+            exec systemctl reboot
+            ;;
+        *)
+            echo "Zvolte jednu z možností (Enter, R, V)"
+            ;;
     esac
 done
 
