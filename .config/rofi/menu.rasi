@@ -33,6 +33,7 @@ configuration {
 window {
     location: north west;
     anchor: north west;
+    y-offset: 42px;
     height: 0px;
     width: 900px;
     background-color: @background;
