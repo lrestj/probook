@@ -1,0 +1,189 @@
+#!/bin/bash
+
+set -e
+
+# Funkce pro přehledné výpisy
+banner() {
+    echo
+    echo "##############################################"
+    printf "#  %-40s  #\n" "$1"
+    echo "##############################################"
+}
+
+# Funkce pro nastavení bare git repozitáře
+setup_bare_repo() {
+    local branch=$1
+    local repo_name=$2
+
+    banner "Probíhá konfigurace ${repo_name}..."
+
+    # Odstranění starého repozitáře, pokud skript běží opakovaně
+    rm -rf "$HOME/.cfg.git"
+
+    git clone --bare -b "$branch" "https://github.com{repo_name}.git" "$HOME/.cfg.git"
+    git --git-dir="$HOME/.cfg.git/" --work-tree="$HOME" checkout -f
+
+    banner "Konfigurace git repozitáře..."
+    git config --global user.email "rest@seznam.cz"
+    git config --global user.name "LrestJ"
+    git --git-dir="$HOME/.cfg.git/" --work-tree="$HOME" remote remove origin
+    git --git-dir="$HOME/.cfg.git/" --work-tree="$HOME" remote add github "git@github.com:lrestj/${repo_name}.git"
+    git --git-dir="$HOME/.cfg.git/" --work-tree="$HOME" remote add gitlab "git@gitlab.com:lrestj/${repo_name}.git"
+    git --git-dir="$HOME/.cfg.git/" --work-tree="$HOME" remote -v
+}
+
+cat << 'EOF'
+
+##################################
+#  Na jaký počítač instalujete?  #
+#  Zbook = 1                     #
+#  Probook = 2                   #
+#  Mirantb = 3                   #
+##################################
+EOF
+
+while true; do
+    read -r -n 1 -p " Vyberte 1/2/3: " answer
+    echo
+    case "$answer" in
+        1)
+            banner "Zvolili jste Zbook..."
+            sleep 2
+            break
+            ;;
+        2)
+            banner "Zvolili jste Probook..."
+            sleep 2
+            break
+            ;;
+        3)
+            banner "Zvolili jste Mirantb..."
+            sleep 2
+            break
+            ;;
+        *)
+            echo "Neplatná volba. Vyberte 1, 2, nebo 3."
+            ;;
+    esac
+done
+
+banner "Instalace balíčků..."
+sleep 2
+sudo apt update
+sudo apt -y install \
+    alacritty baobab brightnessctl btop cliphist curl evince fastfetch fd-find ffmpeg \
+    firewall-applet firewalld fish font-manager fonts-inter fonts-jetbrains-mono fzf \
+    galculator gawk geany git gnome-characters gparted grimshot gvfs hplip-gui imagemagick jq \
+    libnotify-bin libreoffice libreoffice-gnome libreoffice-l10n-cs libncurses-dev libxcb-cursor-dev libxkbcommon-dev \
+    libwayland-dev mako-notifier mate-polkit nemo network-manager-applet nfs-common nwg-look \
+    pamixer papirus-icon-theme pipewire pipewire-alsa pipewire-audio pipewire-pulse pkg-config pavucontrol power-profiles-daemon qt6ct \
+    resvg ripgrep ristretto rofi \
+    simple-scan sway swaybg swayidle swaylock system-config-printer \
+    udiskie udisks2 unzip vainfo \
+    waybar wayland-protocols wget wireplumber wl-clipboard wlsunset \
+    xdg-desktop-portal-wlr xwayland youtubedl-gui zenity zoxide
+
+cd "$HOME"
+mkdir -p Dokumenty Videa Hudba Stažené Templates Public
+
+case "$answer" in
+    1)
+        setup_bare_repo "swaydebian" "zbook"
+        banner "Instalace prohlížeče Brave..."
+        [ -f "$HOME/.local/bin/bravedeb" ] && bash "$HOME/.local/bin/bravedeb"
+        ;;
+    2)
+        setup_bare_repo "debian" "probook"
+        ;;
+    3)
+        setup_bare_repo "debian" "mirantb"
+        banner "Instalace prohlížeče Brave..."
+        [ -f "$HOME/.local/bin/bravedeb" ] && bash "$HOME/.local/bin/bravedeb"
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+banner "Klonování instalačních skriptů..."
+rm -rf "$HOME/.dotfiles/install"
+git clone https://github.com "$HOME/.dotfiles/install/"
+cd "$HOME/.dotfiles/install/"
+git remote remove origin
+git remote add github git@github.com:lrestj/install.git
+git remote add gitlab git@gitlab.com:lrestj/install.git
+git remote -v
+
+banner "Autologin & firewall & swappiness..."
+[ -d "$HOME/.dotfiles/getty@tty1.service.d" ] && sudo cp -rf "$HOME/.dotfiles/getty@tty1.service.d" /etc/systemd/system/
+sudo systemctl enable firewalld.service
+sudo mkdir -p /etc/sysctl.d
+echo "vm.swappiness=10" | sudo tee /etc/sysctl.d/99-swappiness.conf > /dev/null
+[ -d "$HOME/.dotfiles/journald.conf.d" ] && sudo cp -rv "$HOME/.dotfiles/journald.conf.d" /etc/systemd/
+
+banner "Aktivace služeb PipeWire..."
+sudo systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service
+
+banner "NFS Synology settings..."
+if [ -f "$HOME/.dotfiles/nfs2fstab.txt" ]; then
+    sudo cp -v /etc/fstab /etc/fstab.bak
+    grep -qxFf "$HOME/.dotfiles/nfs2fstab.txt" /etc/fstab || cat "$HOME/.dotfiles/nfs2fstab.txt" | sudo tee -a /etc/fstab > /dev/null
+fi
+
+banner "GRUB settings..."
+if ! grep -q "^GRUB_THEME=" /etc/default/grub; then
+    echo "GRUB_THEME=$HOME/.dotfiles/TelaGrubTheme/theme.txt" | sudo tee -a /etc/default/grub > /dev/null
+else
+    sudo sed -i "s|^GRUB_THEME=.*|GRUB_THEME=$HOME/.dotfiles/TelaGrubTheme/theme.txt|" /etc/default/grub
+fi
+sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=2/' /etc/default/grub
+sudo sed -i 's/^GRUB_DISABLE_OS_PROBER=.*/GRUB_DISABLE_OS_PROBER=true/' /etc/default/grub
+[ -f "$HOME/.dotfiles/40_custom" ] && sudo cp -fv "$HOME/.dotfiles/40_custom" /etc/grub.d/
+sudo update-grub
+
+banner "APT sources update..."
+if [ -d "$HOME/.dotfiles/sources.list.d" ] && [ "$(ls -A "$HOME/.dotfiles/sources.list.d")" ]; then
+    sudo cp -rf "$HOME/.dotfiles/sources.list.d" /etc/apt/
+    sudo rm -f /etc/apt/sources.list
+    sudo apt update
+fi
+
+sudo apt install -y hyprpicker || echo "Varování: hyprpicker se nepodařilo nainstalovat."
+[ -f "$HOME/.local/bin/vimbuild" ] && bash "$HOME/.local/bin/vimbuild"
+
+banner "Installing Yazi..."
+if ! sudo apt install -y yazi 2>/dev/null; then
+    YAZI_URL=$(curl -s https://github.com | jq -r '.assets[] | select(.name | test("x86_64-unknown-linux-gnu.zip$")) | .browser_download_url')
+    if [ -n "$YAZI_URL" ]; then
+        wget -qO /tmp/yazi.zip "$YAZI_URL"
+        unzip -qo /tmp/yazi.zip -d /tmp/yazi_extract
+        mkdir -p "$HOME/.local/bin"
+        cp /tmp/yazi_extract/*/yazi /tmp/yazi_extract/*/ya "$HOME/.local/bin/"
+        chmod +x "$HOME/.local/bin/yazi" "$HOME/.local/bin/ya"
+        rm -rf /tmp/yazi.zip /tmp/yazi_extract
+    fi
+fi
+
+banner "Instalace je kompletně dokončena!"
+
+while true; do
+    read -r -n 1 -p "Chcete počítač nyní restartovat? [a/n]: " reboot_answer
+    echo
+    case "$reboot_answer" in
+        [aAyY])
+            echo "Restartuji systém..."
+            sleep 2
+            sudo systemctl reboot
+            break
+            ;;
+        [nN])
+            echo "Restart odložen. Nezapomeňte systém restartovat ručně před spuštěním Sway."
+            break
+            ;;
+        *)
+            echo "Zadejte prosím 'a' (ano) nebo 'n' (ne)."
+            ;;
+    esac
+done
+
+#### END OF FILE ####
