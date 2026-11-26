@@ -5,7 +5,7 @@
 
 export PATH=/home/libor/.local/bin:$PATH
 export EDITOR=vim
-export BROWSER=qutebrowser
+export BROWSER=brave-browser
 export TERMINAL=foot
 export kalk=galculator
 export GTK_THEME=Adwaita:dark
