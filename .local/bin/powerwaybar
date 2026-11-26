@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Definice položek: "Název|ikona|příkaz"
+items=(
+" Zamknout|system-lock-screen|lockscreen"
+" Odhlásit|system-log-out|nfsumount && niri msg action quit --skip-confirmation"
+" Restart|system-reboot|nfsumount && loginctl reboot"
+" Vypnout|system-shutdown|nfsumount && loginctl poweroff"
+)
+
+# Jeden cyklus for pro přípravu menu i uložení příkazů
+declare -A cmds
+menu=""
+
+for item in "${items[@]}"; do
+  IFS='|' read -r label icon cmd <<< "$item"
+  menu+="${label}\0icon\x1f${icon}\n"
+  cmds["$label"]="$cmd"
+done
+
+# Výběr a přímé spuštění bez druhého cyklu
+selected=$(echo -en "$menu" | rofi -i -config ~/.config/rofi/powerwaybar.rasi -dmenu -theme-str 'inputbar { enabled: false; }' )
+
+[[ -n "$selected" ]] && eval "${cmds[$selected]}" || notify-send -t 1200 -i dialog-information "Přerušeno uživatelem."
+
+#### END OF FILE ####

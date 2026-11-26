@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Krátké zpoždění (užitečné hlavně při spuštění z Waybaru, aby se nenabrala barva lišty)
+sleep 0.2
+
+# Spuštění výběru barvy a extrakce HEX kódu
+COLOR=$(niri msg pick-color | grep -o '#[0-9a-fA-F]*')
+
+# Pokud byla barva vybrána (uživatel výběr nezrušil), zkopíruje se a zobrazí notifikace
+if [ -n "$COLOR" ]; then
+    echo -n "$COLOR" | wl-copy
+    notify-send -i colorgrab "Barva zkopírována" "$COLOR"
+fi
+
+#### END OF FILE ####
